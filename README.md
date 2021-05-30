@@ -25,11 +25,7 @@ The channel state information (CSI) matrix is generated from [COST2100](https://
 
 You can generate your own dataset according to the [open source library of COST2100](https://github.com/cost2100/cost2100) as well. The details of data pre-processing can be found in our paper.
 
-#### B. Checkpoints Downloading
-
-The model checkpoints should be downloaded if you would like to reproduce our result. All the checkpoints files can be downloaded from [Dropbox]()
-
-#### C. Project Tree Arrangement
+#### B. Project Tree Arrangement
 
 We recommend you to arrange the project tree as follows.
 
@@ -86,6 +82,8 @@ The params and flops are directly caculated by [thop](https://github.com/Lyken17
 
 #### B. Performance
 
+
+
 The paper reports NMSE result can be reproduced by the follow:
 
 |Scenario | Compression Ratio | NMSE | Checkpoints
@@ -101,7 +99,8 @@ The paper reports NMSE result can be reproduced by the follow:
 |outdoor | 1/32 | -3.49 |  out32.pth|
 |outdoor | 1/64 | -2.19 |  out64.pth|
 
-As aforementioned, we provide model checkpoints for all the results. Our code library supports easy inference. 
+If you would like to reproduce our result, You can directly download the coresponding checkpoints from [Dropbox]() and A [sample training log]() for your reference.
+
 
 **To reproduce all these results, simple add `--evaluate` to `run.sh` and pick the corresponding pre-trained model with `--pretrained`.** An example is shown as follows.
 
