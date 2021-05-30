@@ -2,7 +2,7 @@
 
 This is the PyTorch implementation of paper [CLNet: Complex Input Lightweight Neural
 Network designed for Massive MIMO CSI Feedback](link).
-if you find this repo helpful, please cite our paper:
+If you feel this repo helpful, please cite our paper:
 
 ```
 
