@@ -99,7 +99,7 @@ The NMSE result reported in the paper as follow:
 |outdoor | 1/32 | -3.49 |  out32.pth|
 |outdoor | 1/64 | -2.19 |  out64.pth|
 
-If you want to reproduce our result, you can directly download the coresponding checkpoints from [Dropbox](https://www.dropbox.com/sh/qhqknm60i97a966/AABip4HD4lw4_BdfuM7NtCGWa?dl=0)
+If you want to reproduce our result, you can directly download the corresponding checkpoints from [Dropbox](https://www.dropbox.com/sh/qhqknm60i97a966/AABip4HD4lw4_BdfuM7NtCGWa?dl=0)
 
 
 **To reproduce all these results, simple add `--evaluate` to `run.sh` and pick the corresponding pre-trained model with `--pretrained`.** An example is shown as follows.
