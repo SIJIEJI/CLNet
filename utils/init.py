@@ -48,7 +48,7 @@ def init_model(args):
         assert os.path.isfile(args.pretrained)
         state_dict = torch.load(args.pretrained,
                                 map_location=torch.device('cpu'))['state_dict']
-        model.load_state_dict(state_dict)
+        model.load_state_dict(state_dict,strict=False)
         logger.info("pretrained model loaded from {}".format(args.pretrained))
 
     # Model flops and params counting
