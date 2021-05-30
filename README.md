@@ -108,13 +108,13 @@ If you want to reproduce our result, you can directly download the corresponding
 python /home/CLNet/main.py \
   --data-dir '/home/COST2100' \
   --scenario 'in' \
-  --pretrained './checkpoints/in_04' \
+  --pretrained './checkpoints/in4.pth' \
   --evaluate \
   --batch-size 200 \
   --workers 0 \
   --cr 4 \
   --cpu \
-  2>&1 | tee log.out
+  2>&1 | tee test_log.out
 
 ```
 
