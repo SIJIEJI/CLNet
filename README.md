@@ -90,16 +90,16 @@ The paper reports NMSE result can be reproduced by the follow:
 
 |Scenario | Compression Ratio | NMSE | Checkpoints
 |:--: | :--: | :--: | :--: | 
-|indoor | 1/4 |  |  in_04.pth |
-|indoor | 1/8 |  |  in_08.pth|
-|indoor | 1/16 |  |  in_16.pth|
-|indoor | 1/32 |  |  in_32.pth|
-|indoor | 1/64 |  |  in_64.pth|
-|outdoor | 1/4 |  | out_04.pth|
-|outdoor | 1/8 |  |  out_08.pth|
-|outdoor | 1/16 |  |  out_16.pth|
-|outdoor | 1/32 |  |  out_32.pth|
-|outdoor | 1/64 |  |  out_64.pth|
+|indoor | 1/4 | -29.16 |  in4.pth |
+|indoor | 1/8 |  -15.60|  in8.pth|
+|indoor | 1/16 | -11.15 |  in16.pth|
+|indoor | 1/32 | -8.95 |  in32.pth|
+|indoor | 1/64 | -6.34 |  in64.pth|
+|outdoor | 1/4 | -12.88 | out4.pth|
+|outdoor | 1/8 | -8.29 |  out8.pth|
+|outdoor | 1/16 | -5.56 |  out16.pth|
+|outdoor | 1/32 | -3.49 |  out32.pth|
+|outdoor | 1/64 | -2.19 |  out64.pth|
 
 As aforementioned, we provide model checkpoints for all the results. Our code library supports easy inference. 
 
