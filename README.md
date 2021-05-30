@@ -1,6 +1,6 @@
 ## Overview
 
-This is the PyTorch implementation of paper [CLNet: Complex Input Lightweight Neural
+This is the PyTorch implementation of the paper [CLNet: Complex Input Lightweight Neural
 Network designed for Massive MIMO CSI Feedback](link).
 If you feel this repo helpful, please cite our paper:
 
@@ -49,7 +49,7 @@ home
 
 ## Train CLNet from Scratch
 
-An example of run.sh is listed below. Simply use it with `sh run.sh`. It will start advanced scheme aided CRNet training from scratch. Change scenario using `--scenario` and change compression ratio with `--cr`.
+An example of run.sh is listed below. Simply use it with `sh run.sh`. It starts to train CLNet from scratch. Change scenario using `--scenario` and change compression ratio with `--cr`.
 
 ``` bash
 python /home/CLNet/main.py \
@@ -84,7 +84,7 @@ The params and flops are directly caculated by [thop](https://github.com/Lyken17
 
 
 
-The paper reports NMSE result can be reproduced by the follow:
+The NMSE result reported in the paper as follow:
 
 |Scenario | Compression Ratio | NMSE | Checkpoints
 |:--: | :--: | :--: | :--: | 
@@ -99,7 +99,7 @@ The paper reports NMSE result can be reproduced by the follow:
 |outdoor | 1/32 | -3.49 |  out32.pth|
 |outdoor | 1/64 | -2.19 |  out64.pth|
 
-If you would like to reproduce our result, You can directly download the coresponding checkpoints from [Dropbox](https://www.dropbox.com/sh/qhqknm60i97a966/AABip4HD4lw4_BdfuM7NtCGWa?dl=0)
+If you want to reproduce our result, you can directly download the coresponding checkpoints from [Dropbox](https://www.dropbox.com/sh/qhqknm60i97a966/AABip4HD4lw4_BdfuM7NtCGWa?dl=0)
 
 
 **To reproduce all these results, simple add `--evaluate` to `run.sh` and pick the corresponding pre-trained model with `--pretrained`.** An example is shown as follows.
