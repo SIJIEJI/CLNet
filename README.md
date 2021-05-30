@@ -105,7 +105,7 @@ If you want to reproduce our result, you can directly download the corresponding
 **To reproduce all these results, simple add `--evaluate` to `run.sh` and pick the corresponding pre-trained model with `--pretrained`.** An example is shown as follows.
 
 ``` bash
-python /home/CRNet/main.py \
+python /home/CLNet/main.py \
   --data-dir '/home/COST2100' \
   --scenario 'in' \
   --pretrained './checkpoints/in_04' \
