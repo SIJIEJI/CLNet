@@ -68,7 +68,7 @@ python /home/CLNet/main.py \
 
 #### A. Model Complexity
 
-The params and flops are directly caculated by [thop](https://github.com/Lyken17/pytorch-OpCounter)
+The params and flops are directly caculated by [thop](https://github.com/Lyken17/pytorch-OpCounter). If you use this repo's code directly, the model complexity will be printed to the trainning log. A [sample training log](https://www.dropbox.com/sh/qhqknm60i97a966/AABip4HD4lw4_BdfuM7NtCGWa?dl=0) for your reference.
 
  | Compression Ratio | #Params | Flops | 
  | :--: | :--: | :--: | 
@@ -99,7 +99,7 @@ The paper reports NMSE result can be reproduced by the follow:
 |outdoor | 1/32 | -3.49 |  out32.pth|
 |outdoor | 1/64 | -2.19 |  out64.pth|
 
-If you would like to reproduce our result, You can directly download the coresponding checkpoints from [Dropbox](https://www.dropbox.com/sh/qhqknm60i97a966/AABip4HD4lw4_BdfuM7NtCGWa?dl=0) and A [sample training log](https://www.dropbox.com/sh/qhqknm60i97a966/AABip4HD4lw4_BdfuM7NtCGWa?dl=0) for your reference.
+If you would like to reproduce our result, You can directly download the coresponding checkpoints from [Dropbox](https://www.dropbox.com/sh/qhqknm60i97a966/AABip4HD4lw4_BdfuM7NtCGWa?dl=0)
 
 
 **To reproduce all these results, simple add `--evaluate` to `run.sh` and pick the corresponding pre-trained model with `--pretrained`.** An example is shown as follows.
