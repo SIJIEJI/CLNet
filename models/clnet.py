@@ -190,60 +190,6 @@ class Decoder(nn.Module):
 
         return out
 
-
-class CRNet_ori(nn.Module):
-    def __init__(self, reduction=4):
-        super(CLNet, self).__init__()
-        total_size, in_channel, w, h = 2048, 2, 32, 32
-        logger.info(f'reduction={reduction}')
-        self.encoder1 = nn.Sequential(OrderedDict([
-            ("conv3x3_bn", ConvBN(in_channel, 2, 3)),
-            ("relu1", nn.LeakyReLU(negative_slope=0.3, inplace=True)),
-            ("conv1x9_bn", ConvBN(2, 2, [1, 9])),
-            ("relu2", nn.LeakyReLU(negative_slope=0.3, inplace=True)),
-            ("conv9x1_bn", ConvBN(2, 2, [9, 1])),
-        ]))
-        self.encoder2 = ConvBN(in_channel, 2, 3)
-        self.encoder_conv = nn.Sequential(OrderedDict([
-            ("relu1", nn.LeakyReLU(negative_slope=0.3, inplace=True)),
-            ("conv1x1_bn", ConvBN(4, 2, 1)),
-            ("relu2", nn.LeakyReLU(negative_slope=0.3, inplace=True)),
-        ]))
-        self.encoder_fc = nn.Linear(total_size, total_size // reduction)
-
-        self.decoder_fc = nn.Linear(total_size // reduction, total_size)
-        decoder = OrderedDict([
-            ("conv5x5_bn", ConvBN(2, 2, 5)),
-            ("relu", nn.LeakyReLU(negative_slope=0.3, inplace=True)),
-            ("CRBlock1", CRBlock()),
-            ("CRBlock2", CRBlock())
-        ])
-        self.decoder_feature = nn.Sequential(decoder)
-        self.sigmoid = nn.Sigmoid()
-
-        for m in self.modules():
-            if isinstance(m, (nn.Conv2d, nn.Linear)):
-                nn.init.xavier_uniform_(m.weight)
-            elif isinstance(m, nn.BatchNorm2d):
-                nn.init.constant_(m.weight, 1)
-                nn.init.constant_(m.bias, 0)
-
-    def forward(self, x):
-        n, c, h, w = x.detach().size()
-        
-        encode1 = self.encoder1(x)
-        encode2 = self.encoder2(x)
-        out = torch.cat((encode1, encode2), dim=1)
-        out = self.encoder_conv(out)
-        out = self.encoder_fc(out.view(n, -1))
-
-        out = self.decoder_fc(out).view(n, c, h, w)
-        out = self.decoder_feature(out)
-        out = self.sigmoid(out)
-
-        return out
-
-
 class CLNet(nn.Module):
     def __init__(self, reduction=4):
         super(CLNet, self).__init__()
