@@ -1,8 +1,8 @@
 ## Overview
 
 This is the PyTorch implementation of the paper [CLNet: Complex Input Lightweight Neural
-Network designed for Massive MIMO CSI Feedback](https://arxiv.org/abs/2102.07507).
-If you feel this repo helpful, please cite our paper (to be appear in IEEE Wireless Communications Letters) :
+Network designed for Massive MIMO CSI Feedback](https://ieeexplore.ieee.org/document/9497358).
+If you feel this repo helpful, please cite our paper:
 
 ```
 @article{ji2021clnet,
@@ -11,6 +11,7 @@ If you feel this repo helpful, please cite our paper (to be appear in IEEE Wirel
   journal={IEEE Wireless Communications Letters},
   year={2021},
   publisher={IEEE}
+  doi={10.1109/LWC.2021.3100493}}
 }
 
 ```
