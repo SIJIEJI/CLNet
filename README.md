@@ -76,7 +76,7 @@ python /home/CLNet/main.py \
 
 #### A. Model Complexity
 
-The params and flops are directly caculated by [thop](https://github.com/Lyken17/pytorch-OpCounter). If you use this repo's code directly, the model complexity will be printed to the trainning log. A [sample training log](https://www.dropbox.com/sh/qhqknm60i97a966/AABip4HD4lw4_BdfuM7NtCGWa?dl=0) for your reference.
+The params and flops are directly caculated by [thop](https://github.com/Lyken17/pytorch-OpCounter). If you use this repo's code directly, the model complexity will be printed to the trainning log. A [sample training log](https://www.dropbox.com/sh/qhqknm60i97a966/AABip4HD4lw4_BdfuM7NtCGWa?dl=0) for your reference. The flops reported in the paper are caculated by fvcore to align with other SOTA works. The fvcore caculator didn't count the BN layer in, therefore it's less than thop. 
 
  | Compression Ratio | #Params | Flops | 
  | :--: | :--: | :--: | 
