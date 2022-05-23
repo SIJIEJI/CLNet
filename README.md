@@ -22,7 +22,7 @@ If you feel this repo helpful, please cite our paper:
 To use this project, you need to ensure the following requirements are installed.
 
 - Python >= 3.7
-- [PyTorch >= 1.2](https://pytorch.org/get-started/locally/)
+- [PyTorch >= 1.2 also compatible with PyTorch >= 1.7 with fft fix](https://pytorch.org/get-started/locally/)
 - [thop](https://github.com/Lyken17/pytorch-OpCounter)
 
 ## Project Preparation
