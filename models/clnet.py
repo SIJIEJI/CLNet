@@ -30,9 +30,9 @@ class CRBlock(nn.Module):
         self.path1 = nn.Sequential(OrderedDict([
             ('conv3x3', ConvBN(2, 7, 3)),
             ('relu1', nn.LeakyReLU(negative_slope=0.3, inplace=True)),
-            ('conv1x9', ConvBN(7, 7, [1, 9])),
+            ('conv1x3', ConvBN(7, 7, [1, 3])),
             ('relu2', nn.LeakyReLU(negative_slope=0.3, inplace=True)),
-            ('conv9x1', ConvBN(7, 7, [9, 1])),
+            ('conv3x1', ConvBN(7, 7, [3, 1])),
         ]))
         self.path2 = nn.Sequential(OrderedDict([
             ('conv1x5', ConvBN(2, 7, [1, 5])),
@@ -122,36 +122,29 @@ class Encoder(nn.Module):
             ("relu2", nn.LeakyReLU(negative_slope=0.3, inplace=True)),
             ("conv9x1_bn", ConvBN(2, 2, [9, 1])),
         ]))
-        self.encoder2 = ConvBN(in_channel, 16,1)
+        self.encoder2 = ConvBN(in_channel, 32,1)
         self.encoder_conv = nn.Sequential(OrderedDict([
             ("relu1", nn.LeakyReLU(negative_slope=0.3, inplace=True)),
             ("conv1x1_bn", ConvBN(34, 2, 1)),
             ("relu2", nn.LeakyReLU(negative_slope=0.3, inplace=True)),
         ]))
-        self.conv3 = ConvBN(16,2,3)
         self.sa = SpatialGate()
         self.se = SELayer(32)
-        self.encoder_fc = nn.Linear(total_size, total_size // reduction)
-
         self.replace_efc = nn.Conv1d(total_size,total_size // reduction,1)
         
     def forward(self, x):
 
         n, c, h, w = x.detach().size()
-        #encode1 = self.encoder1(x)
-        #encode1 = self.sa(encode1)
+        encode1 = self.encoder1(x)
+        encode1 = self.sa(encode1)
         encode2 = self.encoder2(x)
-        #import pdb;pdb.set_trace()
-        encode2 = self.sa(encode2)
-        #out = torch.cat((encode1, encode2), dim=1)
-        #out = self.encoder_conv(out)
-        out = encode2
-        out = self.conv3(encode2)
+        encode2 = self.se(encode2)
+        out = torch.cat((encode1, encode2), dim=1)
+        out = self.encoder_conv(out)
         
-        #
         out = out.view(n, -1)
-        #out = out.unsqueeze(2) #[1,2048,1]
-        out = self.encoder_fc(out) # [1,2048/cr,1]
+        out = out.unsqueeze(2) #[1,2048,1]
+        out = self.replace_efc(out) # [1,2048/cr,1]
 
         return out
 
@@ -170,7 +163,6 @@ class Decoder(nn.Module):
         self.decoder_feature = nn.Sequential(decoder)
         self.sigmoid = nn.Sigmoid()
         self.hsig= hsigmoid()
-        self.decoder_fc = nn.Linear(total_size // reduction, total_size)
 
         for m in self.modules():
             if isinstance(m, (nn.Conv2d, nn.Linear)):
@@ -181,8 +173,8 @@ class Decoder(nn.Module):
 
     def forward(self, x):
         c,h,w = 2,32,32
-        out = self.decoder_fc(x)
-        #out = self.replace_dfc(x) # [1,2048,1]
+
+        out = self.replace_dfc(x) # [1,2048,1]
         out = out.view(-1, c, h, w) #
         
         out = self.decoder_feature(out)
